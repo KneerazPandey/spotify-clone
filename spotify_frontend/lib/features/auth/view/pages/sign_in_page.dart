@@ -2,22 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:spotify_frontend/core/theme/theme.dart';
 import 'package:spotify_frontend/core/widgets/widgets.dart';
 
-class SignUpPage extends StatefulWidget {
-  const SignUpPage({super.key});
+class SignInPage extends StatefulWidget {
+  const SignInPage({super.key});
 
   @override
-  State<SignUpPage> createState() => _SignUpPageState();
+  State<SignInPage> createState() => _SignInPageState();
 }
 
-class _SignUpPageState extends State<SignUpPage> {
-  late TextEditingController _nameController;
+class _SignInPageState extends State<SignInPage> {
   late TextEditingController _emailController;
   late TextEditingController _passwordController;
   late GlobalKey<FormState> _formKey;
 
   @override
   void initState() {
-    _nameController = TextEditingController();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
     _formKey = GlobalKey<FormState>();
@@ -26,7 +24,6 @@ class _SignUpPageState extends State<SignUpPage> {
 
   @override
   void dispose() {
-    _nameController.dispose();
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
@@ -36,7 +33,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(15),
+        padding: const EdgeInsets.all(12),
         child: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
             return SingleChildScrollView(
@@ -50,19 +47,15 @@ class _SignUpPageState extends State<SignUpPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
+                      children: [
                         const Text(
-                          "Sign Up.",
+                          "Sign In.",
                           style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 50,
                           ),
                         ),
                         const SizedBox(height: 30),
-                        CustomTextFormField(
-                          hintText: "Name",
-                          controller: _nameController,
-                        ),
                         const SizedBox(height: 15),
                         CustomTextFormField(
                           hintText: "Email",
@@ -81,16 +74,16 @@ class _SignUpPageState extends State<SignUpPage> {
                               //! NOTE: handle sign up logic here.
                             }
                           },
-                          text: "Sign Up",
+                          text: "Sign In",
                         ),
                         const SizedBox(height: 10),
                         RichText(
                           text: TextSpan(
                             style: Theme.of(context).textTheme.titleMedium,
-                            text: "Already have an account?",
+                            text: "Need an account?",
                             children: const <TextSpan>[
                               TextSpan(
-                                text: " Sign In",
+                                text: " Sign Up",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: AppColor.gradient2,
